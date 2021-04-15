@@ -2,7 +2,7 @@ package vdedejski.finki.lab02.model.enumerations;
 
 public enum Category {
     NOVEL,
-    THRILER,
+    THRILLER,
     HISTORY,
     FANTASY,
     BIOGRAPHY,

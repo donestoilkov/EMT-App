@@ -1,7 +1,8 @@
 import React from "react";
 
-const category = (props) => {
+import BookTerm from "../BookTerms/bookTerm"
 
+const books = (props) => {
     return (
         <div className={"container mm-4 mt-5"}>
             <div className={"row"}>
@@ -9,16 +10,17 @@ const category = (props) => {
                     <table className={"table table-striped"}>
                         <thead>
                         <tr>
+                            <th scope={"col"}>Name</th>
+                            <th scope={"col"}>Available copies</th>
                             <th scope={"col"}>Category</th>
+                            <th scope={"col"}>Author name</th>
                         </tr>
                         </thead>
 
                         <tbody>
                         {props.books.map((term) => {
                             return (
-                                <tr>
-                                    <td>{term.category}</td>
-                                </tr>
+                              <BookTerm term={term}/>
                             )
                         })}
                         </tbody>
@@ -28,3 +30,5 @@ const category = (props) => {
         </div>
     );
 }
+
+export default books;
