@@ -40,10 +40,10 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book update(BookDTO bookDTO) {
-        Book book = bookRepository.findById(bookDTO.getId()).orElseThrow();
+    public Book update(Long id, BookDTO bookDTO) {
+        Book book = bookRepository.findById(id).orElseThrow();
 
-        book.setAuthor(authorRepository.findById(bookDTO.getAuthorId()).orElseThrow());
+        book.setAuthor(authorRepository.findById(id).orElseThrow());
         book.setCategory(Category.values()[bookDTO.getCategoryId()]);
         book.setAvailableCopies(bookDTO.getAvailableCopies());
         book.setName(bookDTO.getName());

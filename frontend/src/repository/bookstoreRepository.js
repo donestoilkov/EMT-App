@@ -37,6 +37,10 @@ const BookstoreService = {
 
     getBook: (id) => {
         return axios.get(`/books/${id}`)
+    },
+
+    markAsTaken: (id) => {
+        return axios.post(`/books/marktaken/${id}`);
     }
 }
 

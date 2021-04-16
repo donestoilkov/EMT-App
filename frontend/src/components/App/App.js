@@ -81,6 +81,13 @@ class App extends React.Component {
             });
     }
 
+    markAsTaken = (id) => {
+        BookstoreService.markAsTaken(id)
+            .then(() => {
+                this.loadBooks();
+            });
+    }
+
     componentDidMount() {
         this.loadBooks();
         this.loadAuthors();
@@ -100,7 +107,7 @@ class App extends React.Component {
                             onAddBook={this.addBook}
                         />}/>
 
-                        <Route path={"/books/add/:id"} exact render={() => <BookEdit
+                        <Route path={"/books/edit/:id"} exact render={() => <BookEdit
                             categories={this.state.categories}
                             authors={this.state.authors}
                             onEditBook={this.editBook}
@@ -112,6 +119,7 @@ class App extends React.Component {
                             books={this.state.books}
                             onDelete={this.deleteBook}
                             onEdit={this.getBook}
+                            onMarkAsTaken={this.markAsTaken}
                         />}/>
 
                         <Route path={"/categories"} exact render={() => <Categories

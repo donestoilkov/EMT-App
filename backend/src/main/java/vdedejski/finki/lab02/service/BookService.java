@@ -13,7 +13,7 @@ public interface BookService {
 
     Book save(BookDTO bookDTO);
 
-    Book update(BookDTO bookDTO);
+    Book update(Long id, BookDTO bookDTO);
 
     List<Book> findAll();
 

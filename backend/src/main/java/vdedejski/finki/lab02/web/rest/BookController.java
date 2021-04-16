@@ -33,12 +33,12 @@ public class BookController {
         return this.bookService.save(bookDTO);
     }
 
-    @PostMapping("/edit")
-    public Book update(@RequestBody BookDTO bookDTO){
-        return this.bookService.update(bookDTO);
+    @PutMapping("/edit/{id}")
+    public Book update(@PathVariable Long id, @RequestBody BookDTO bookDTO){
+        return this.bookService.update(id ,bookDTO);
     }
 
-    @PostMapping("/mark-taken/{id}")
+    @PostMapping("/marktaken/{id}")
     public void markAsTaken(@PathVariable Long id) throws Exception {
         bookService.markAsTakenById(id);
     }
