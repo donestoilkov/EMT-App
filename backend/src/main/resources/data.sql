@@ -23,4 +23,19 @@ INSERT INTO book (available_copies, category, name, author_id)
 VALUES ('3', 'HISTORY', 'Teskoto', (SELECT id FROM author WHERE author.name = 'Blazhe'));
 
 INSERT INTO book (available_copies, category, name, author_id)
-VALUES ('6', 'BIOGRAPHY', 'The sun also rises', (SELECT id FROM author WHERE author.name = 'Ernest'));
+VALUES ('6', 'BIOGRAPHY', 'The old man and the sea', (SELECT id FROM author WHERE author.name = 'Ernest'));
+
+INSERT INTO book (available_copies, category, name, author_id)
+VALUES ('5', 'DRAMA', 'Romeo and Juliet ', (SELECT id FROM author WHERE author.name = 'William'));
+
+INSERT INTO book (available_copies, category, name, author_id)
+VALUES ('2', 'CLASSICS', 'Poems', (SELECT id FROM author WHERE author.name = 'Blazhe'));
+
+INSERT INTO book (available_copies, category, name, author_id)
+VALUES ('8', 'FANTASY', 'A farewell to arms', (SELECT id FROM author WHERE author.name = 'Ernest'));
+
+INSERT INTO book (available_copies, category, name, author_id)
+VALUES ('15', 'BIOGRAPHY', 'Macbeth', (SELECT id FROM author WHERE author.name = 'William'));
+
+INSERT INTO book (available_copies, category, name, author_id)
+VALUES ('1', 'NOVEL', 'For whom the bell tolls', (SELECT id FROM author WHERE author.name = 'Ernest'));

@@ -24,7 +24,7 @@ const BookEdit = (props) => {
         const name = formData.name !== "" ? formData.name : props.book.name;
         const categoryId = formData.categoryId;
         const authorId = formData.authorId;
-        const availableCopies = formData.availableCopies;
+        const availableCopies = formData.availableCopies > 0 ? formData.availableCopies : props.book.availableCopies;
 
         props.onEditBook(props.book.id, name, categoryId, authorId, availableCopies);
         history.push("/books");
@@ -52,6 +52,7 @@ const BookEdit = (props) => {
                     <div className="form-group">
                         <label htmlFor="name">Available copies</label>
                         <input type="number"
+                               min = "0"
                                className="form-control"
                                id="availableCopies"
                                name="availableCopies"
