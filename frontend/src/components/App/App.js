@@ -130,7 +130,7 @@ class App extends React.Component {
                             authors={this.state.authors}
                         />}/>
 
-                        {/*<Redirect to={"/books"}/>*/}
+                        <Redirect to={"/books"}/>
                     </div>
                 </main>
             </Router>
