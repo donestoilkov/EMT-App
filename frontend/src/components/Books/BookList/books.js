@@ -14,13 +14,14 @@ const books = (props) => {
                             <th scope={"col"}>Available copies</th>
                             <th scope={"col"}>Category</th>
                             <th scope={"col"}>Author name</th>
+                            <th scope={"col"}></th>
                         </tr>
                         </thead>
 
                         <tbody>
                         {props.books.map((term) => {
                             return (
-                              <BookTerm term={term}/>
+                              <BookTerm term={term} onDelete={props.onDelete} onEdit={props.onEdit}/>
                             )
                         })}
                         </tbody>

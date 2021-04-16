@@ -1,8 +1,10 @@
 import React, {Component} from "react";
 import {BrowserRouter as Router, Redirect, Route} from "react-router-dom";
 
-import Header from "../Header/header"
+import Header from "../Header/header";
 import Books from "../Books/BookList/books";
+import BookAdd from "../Books/BookAdd/bookAdd";
+import BookEdit from "../Books/BookEdit/bookEd";
 import Categories from "../Categories/categories";
 import Authors from "../Authors/authors";
 
@@ -17,7 +19,8 @@ class App extends React.Component {
         this.state = {
             books: [],
             categories: [],
-            authors: []
+            authors: [],
+            selectedBook: {}
         }
     }
 
@@ -48,6 +51,36 @@ class App extends React.Component {
             });
     }
 
+    deleteBook = (id) => {
+        BookstoreService.deleteBook(id)
+            .then(() => {
+                this.loadBooks();
+            })
+    }
+
+    addBook = (name, categoryId, authorId, availableCopies) => {
+        BookstoreService.addBook(name, categoryId, authorId, availableCopies)
+            .then(() => {
+                this.loadBooks();
+            })
+    }
+
+    getBook = (id) => {
+        BookstoreService.getBook(id)
+            .then((data) => {
+                this.setState({
+                    selectedBook: data.data
+                })
+            });
+    }
+
+    editBook = (id, name, categoryId, authorId, availableCopies) => {
+        BookstoreService.editBook(id, name, categoryId, authorId, availableCopies)
+            .then(() => {
+                this.loadBooks()
+            });
+    }
+
     componentDidMount() {
         this.loadBooks();
         this.loadAuthors();
@@ -55,15 +88,41 @@ class App extends React.Component {
     }
 
     render() {
+        console.log(this.state.selectedBook);
         return (
             <Router>
                 <Header/>
                 <main>
                     <div className="container">
-                        <Route path={"/books"} exact render={() => <Books books={this.state.books}/>}/>
-                        <Route path={"/categories"} exact render={() => <Categories categories={this.state.categories}/>}/>
-                        <Route path={"/authors"} exact render={() => <Authors authors={this.state.authors}/>}/>
-                        <Redirect to={"/books"}/>
+                        <Route path={"/books/add"} exact render={() => <BookAdd
+                            categories={this.state.categories}
+                            authors={this.state.authors}
+                            onAddBook={this.addBook}
+                        />}/>
+
+                        <Route path={"/books/add/:id"} exact render={() => <BookEdit
+                            categories={this.state.categories}
+                            authors={this.state.authors}
+                            onEditBook={this.editBook}
+                            book={this.state.selectedBook}
+                        />}/>
+
+
+                        <Route path={"/books"} exact render={() => <Books
+                            books={this.state.books}
+                            onDelete={this.deleteBook}
+                            onEdit={this.getBook}
+                        />}/>
+
+                        <Route path={"/categories"} exact render={() => <Categories
+                            categories={this.state.categories}
+                        />}/>
+
+                        <Route path={"/authors"} exact render={() => <Authors
+                            authors={this.state.authors}
+                        />}/>
+
+                        {/*<Redirect to={"/books"}/>*/}
                     </div>
                 </main>
             </Router>

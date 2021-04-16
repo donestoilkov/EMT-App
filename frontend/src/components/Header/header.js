@@ -11,6 +11,8 @@ const header = (props) => {
                     <Nav.Link as={Link} to={"/authors"}>Authors</Nav.Link>
                     <Nav.Link as={Link} to={"/categories"}>Categories</Nav.Link>
                     <Nav.Link as={Link} to={"/books"}>Books</Nav.Link>
+                    <Nav.Link as={Link} to={"/books/add"}>Add a book</Nav.Link>
+
                 </Nav>
                 {/*<Form inline>*/}
                 {/*    <FormControl type="text" placeholder="Search" className="mr-sm-2"/>*/}
